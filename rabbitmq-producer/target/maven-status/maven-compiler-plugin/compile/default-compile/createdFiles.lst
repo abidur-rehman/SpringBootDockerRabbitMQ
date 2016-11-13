@@ -1,5 +1,0 @@
-rabbitmq/producer/Sender.class
-rabbitmq/producer/Message.class
-rabbitmq/producer/ProducerApplication.class
-rabbitmq/producer/Controller.class
-rabbitmq/producer/Call.class
