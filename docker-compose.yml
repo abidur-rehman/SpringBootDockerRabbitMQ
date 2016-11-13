@@ -1,0 +1,28 @@
+version: '2'
+services:
+    producer:
+        build: ./rabbitmq-producer/
+        environment:
+            - SPRING_RABBITMQ_ADDRESSES=172.20.0.2
+            - PORT=5672
+        depends_on:
+          - rabbitmq
+        ports:
+          - "8080:8080"
+        volumes:
+          - ./rabbitmq-producer/:/rabbitmq-producer/
+    receiver:
+        build: ./rabbitmq-consumer/
+        environment:
+            - SPRING_RABBITMQ_ADDRESSES=172.20.0.2
+            - PORT=5672
+        depends_on:
+          - rabbitmq
+          - producer
+        volumes:
+          - ./rabbitmq-consumer/:/rabbitmq-consumer/        
+    rabbitmq:
+        image: rabbitmq:management
+        ports:
+        - "5672:5672"
+        - "15672:15672"

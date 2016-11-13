@@ -1,0 +1,24 @@
+rabbitmq:
+  image: rabbitmq:management
+  ports:
+    - "5672:5672"
+    - "15672:15672"
+producer:
+  image: java:openjdk-8u91-jdk
+  working_dir: /app
+  volumes:
+    - ./rabbitmq-consumer-producer/build/libs:/app
+  command: java -jar /app/rabbitmq-consumer-producer-0.1.0.jar  
+  links:
+    - rabbitmq
+consumer:
+  image: java:openjdk-8u91-jdk
+  build: rabbitmq-consumer-consumer
+  working_dir: /app
+  volumes:
+    - ./rabbitmq-consumer-consumer/build/libs:/app
+  command: java -jar /app/rabbitmq-consumer-consumer-0.1.0.jar    
+  links:
+    - rabbitmq
+    - producer
+  command: command: java -jar /app/rabbitmq-consumer-producer-0.1.0.jar  

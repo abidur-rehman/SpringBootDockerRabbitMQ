@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: rabbitmq-consumer
+Implementation-Version: 0.1.0
+Built-By: abidrehman
+Implementation-Vendor-Id: test.com
+Build-Jdk: 1.8.0_73
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
